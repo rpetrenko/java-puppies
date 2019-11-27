@@ -6,7 +6,7 @@ Usage: javac FirstNonRepeating.java
 */
 public class FirstNonRepeating {
     
-    public static Character process(String v) {
+    public static String process(String v) {
         HashMap<Character, ArrayList<Integer>> map = new HashMap();
         for (int i=0; i<v.length(); i++) {
             Character ch = v.charAt(i);
@@ -29,14 +29,17 @@ public class FirstNonRepeating {
                 indices.add(values.get(0));
             }
         }
-        
-        Integer mini = Collections.min(indices);
-        //System.out.println(mini);
-        return v.charAt(mini);
+        String result = "";
+        if (indices.size() > 0) {
+            Integer mini = Collections.min(indices);
+            //System.out.println(mini);
+            result = Character.toString(v.charAt(mini));
+        }
+        return result;
     }
 
     public static void main(String args[]) {
-        Character result = process(args[0]);
+        String result = process(args[0]);
         System.out.println("First non-repeating character: " + result);
     }
 }
